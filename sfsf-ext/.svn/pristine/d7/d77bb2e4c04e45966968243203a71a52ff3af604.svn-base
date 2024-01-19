@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://java.sun.com/xml/ns/javaee"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+	id="WebApp_ID" version="3.0">
+	<display-name>MyHRExtension</display-name>
+
+	<listener>
+		<listener-class>com.doosan.scp.myhrext.connectivity.ConnectivityInitializerListener</listener-class>
+	</listener>
+
+	<servlet>
+		<servlet-name>EmployeeSearchByWSServlet</servlet-name>
+		<servlet-class>com.doosan.scp.myhrext.servlet.EmployeeSearchByWSServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>EmployeeSearchByADServlet</servlet-name>
+		<servlet-class>com.doosan.scp.myhrext.servlet.EmployeeSearchByADServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>ConnectivityServlet</servlet-name>
+		<servlet-class>com.doosan.scp.myhrext.servlet.ConnectivityServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>ConnectivityTestServlet</servlet-name>
+		<servlet-class>com.doosan.scp.myhrext.servlet.ConnectivityTestServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>TeamAnniversaryServlet</servlet-name>
+		<servlet-class>com.doosan.scp.myhrext.servlet.TeamAnniversaryServlet</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>EmployeeSearchByWSServlet</servlet-name>
+		<url-pattern>/empSearchByWS</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>EmployeeSearchByADServlet</servlet-name>
+		<url-pattern>/empSearchByAD</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>ConnectivityServlet</servlet-name>
+		<url-pattern>/connectivity</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>ConnectivityTestServlet</servlet-name>
+		<url-pattern>/connectivityTest</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>TeamAnniversaryServlet</servlet-name>
+		<url-pattern>/teamAnniversary</url-pattern>
+	</servlet-mapping>
+	
+	<resource-ref>
+	    <res-ref-name>connectivityConfiguration</res-ref-name>
+	    <res-type>com.sap.core.connectivity.api.configuration.ConnectivityConfiguration</res-type>
+	</resource-ref>
+	
+	
+	<login-config>
+		<auth-method>FORM</auth-method>
+	</login-config>
+	<security-constraint>
+		<web-resource-collection>
+			<web-resource-name>Protected Area</web-resource-name>
+			<url-pattern>/*</url-pattern>
+		</web-resource-collection>
+		<auth-constraint>
+			<role-name>Everyone</role-name>
+			<role-name>Administrator</role-name>
+		</auth-constraint>
+	</security-constraint>
+
+	<!-- 
+	<security-constraint>
+		<web-resource-collection>
+			<web-resource-name>Admin area</web-resource-name>
+			<url-pattern>/view/campaigns/*</url-pattern>
+			<url-pattern>/view/employees/*</url-pattern>
+			<url-pattern>/OData.svc/hrCampaigns</url-pattern>
+			<url-pattern>/OData.svc/startCampaign</url-pattern>
+			<url-pattern>/OData.svc/stopCampaign</url-pattern>
+			<url-pattern>/OData.svc/addCampaign</url-pattern>
+			<url-pattern>/OData.svc/deleteCampaign</url-pattern>
+			<url-pattern>/OData.svc/editCampaign</url-pattern>
+			<url-pattern>/OData.svc/resetDB</url-pattern>
+			<url-pattern>/OData.svc/managed</url-pattern>
+		</web-resource-collection>
+		<auth-constraint>
+			<role-name>Administrator</role-name>
+		</auth-constraint>
+	</security-constraint>
+	<security-constraint>
+		<web-resource-collection>
+			<web-resource-name>Open OData</web-resource-name>
+			<url-pattern>/OData.svc/userCampaigns</url-pattern>
+			<url-pattern>/OData.svc/addOrder</url-pattern>
+			<url-pattern>/OData.svc/deleteOrder</url-pattern>
+			<url-pattern>/OData.svc/uiConfig</url-pattern>
+			<url-pattern>/OData.svc/userInfo</url-pattern>
+			<url-pattern>/OData.svc/profile</url-pattern>
+			<url-pattern>/OData.svc/BenefitInfos</url-pattern>
+			<url-pattern>/OData.svc/Orders</url-pattern>
+			<url-pattern>/OData.svc/Orders</url-pattern>
+			<url-pattern>/OData.svc/userPhoto</url-pattern>
+			<url-pattern>/OData.svc/userPoints</url-pattern>
+			<url-pattern>/OData.svc/hrPhoto</url-pattern>
+		</web-resource-collection>
+		<auth-constraint>
+			<role-name>Everyone</role-name>
+		</auth-constraint>
+	</security-constraint>
+	<security-constraint>
+		<web-resource-collection>
+			<web-resource-name>Unsecured open social widgets for portal integration</web-resource-name>
+			<url-pattern>/resources/*</url-pattern>
+		</web-resource-collection>
+		<web-resource-collection>
+			<web-resource-name>Logout</web-resource-name>
+			<description>Logout</description>
+			<url-pattern>/logout.jsp</url-pattern>
+			<url-pattern>/logout</url-pattern>
+		</web-resource-collection>
+	</security-constraint>
+	<security-constraint>
+		<web-resource-collection>
+			<web-resource-name>Static Content</web-resource-name>
+			<url-pattern>/img/*</url-pattern>
+		</web-resource-collection>
+		<user-data-constraint>
+			<transport-guarantee>NONE</transport-guarantee>
+		</user-data-constraint>
+	</security-constraint>
+	<security-role>
+		<description>HR Administrator</description>
+		<role-name>Administrator</role-name>
+	</security-role>
+	<security-role>
+		<description>Data Analyzer</description>
+		<role-name>Analyzer</role-name>
+	</security-role>
+	
+	-->	
+	
+	<welcome-file-list>
+		<welcome-file>index.html</welcome-file>
+		<welcome-file>index.jsp</welcome-file>
+	</welcome-file-list>
+</web-app>

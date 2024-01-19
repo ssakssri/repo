@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
+  <display-name>sfsf-ext</display-name>
+<!--   <login-config> -->
+<!--     <auth-method>SAML2</auth-method> -->
+<!--   </login-config> -->
+<!--   <security-constraint> -->
+<!--     <web-resource-collection> -->
+<!--       <web-resource-name>Protected Area</web-resource-name> -->
+<!--       <url-pattern>/*</url-pattern> -->
+<!--     </web-resource-collection> -->
+<!--     <auth-constraint> -->
+<!--       <role-name>Everyone</role-name> -->
+<!--       <role-name>Administrator</role-name> -->
+<!--     </auth-constraint> -->
+<!--   </security-constraint> -->
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+  </welcome-file-list>
+  <servlet>
+    <display-name>ODataProxyServlet</display-name>
+    <servlet-name>ODataProxyServlet</servlet-name>
+    <servlet-class>com.ssakssri.api.connectivity.ODataProxyServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ODataProxyServlet</servlet-name>
+    <url-pattern>/odata/v2/*</url-pattern>
+  </servlet-mapping>
+  <resource-ref>
+    <res-ref-name>connectivityConfiguration</res-ref-name>
+    <res-type>com.ssakssri.api.connectivity.http.DestinationConfigurationLocal</res-type>
+  </resource-ref>
+  <resource-ref>
+    <res-ref-name>authenticationHeaderProvider</res-ref-name>
+    <res-type>com.sap.core.connectivity.api.authentication.BasicAuthenticationHeaderProviderLocal</res-type>
+  </resource-ref>
+</web-app>
