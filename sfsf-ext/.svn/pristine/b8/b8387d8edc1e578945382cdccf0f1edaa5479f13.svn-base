@@ -1,8 +1,0 @@
-<soapenv:Body xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
-	<ns1:MT_PersonalInfo_All_EHR xmlns:ns1="http://ghris.corp.doosan.com/ws">
-		<PERNR>1453983</PERNR>
-		<DATE>20180214</DATE>
-		<SPRAS>3</SPRAS>
-		<DPERN>1453983</DPERN>
-	</ns1:MT_PersonalInfo_All_EHR>
-</soapenv:Body>
